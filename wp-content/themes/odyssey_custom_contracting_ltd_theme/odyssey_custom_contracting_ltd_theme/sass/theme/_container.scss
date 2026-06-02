@@ -1,0 +1,175 @@
+.container {
+	@include section-padding-leftright();
+	>.row:not(.mx-0){
+		width:calc(100% + #{$grid-gutter-width});
+	}
+}
+.container-zero{
+	// no padding etc, but still a max-width of 1440.
+	@include media-breakpoint-up(xl){
+		max-width:map-get($container-max-widths,xl);
+		margin-left:auto;
+		margin-right:auto;
+	}
+}
+// VERT section paddiing
+.section-p-tb{
+	@include section-padding-topbottom();
+}
+.section-p-t{
+	@include section-spacing-override(top,padding,1,$section-padding-topbottom);
+}
+.section-p-b{
+	@include section-spacing-override(bottom,padding,1,$section-padding-topbottom);
+}
+.section-m-tb{
+	@include section-spacing-override(top,margin,1,$section-padding-topbottom);
+	@include section-spacing-override(bottom,margin,1,$section-padding-topbottom);
+}
+.section-m-t{
+	@include section-spacing-override(top,margin,1,$section-padding-topbottom);
+}
+.section-m-b{
+	@include section-spacing-override(bottom,margin,1,$section-padding-topbottom);
+}
+// left/right padding classes
+.section-p-lr{
+	@include section-padding-leftright();
+}
+.section-p-l{
+	@include section-spacing-override(left,padding,1,$section-padding-leftright);
+}
+.section-p-r{
+	@include section-spacing-override(right,padding,1,$section-padding-leftright);
+}
+.section-m-lr{
+	@include section-spacing-override(left,margin,1,$section-padding-leftright);
+	@include section-spacing-override(right,margin,1,$section-padding-leftright);
+}
+.section-m-l{
+	@include section-spacing-override(left,margin,1,$section-padding-leftright);
+}
+.section-m-r{
+	@include section-spacing-override(right,margin,1,$section-padding-leftright);
+}
+
+// VERT 1 spacing classes
+.vert1-p-tb{
+	@include section-padding-topbottom(1, $vert-1);
+}
+.vert1-p-t{
+	@include section-spacing-override(top,padding,1,$vert-1);
+}
+.vert1-p-b{
+	@include section-spacing-override(bottom,padding,1,$vert-1);
+}
+.vert1-p-lr{
+	@include section-padding-leftright(1, $vert-1);
+}
+.vert1-p-l{
+	@include section-spacing-override(left,padding,1,$vert-1);
+}
+.vert1-p-r{
+	@include section-spacing-override(right,padding,1,$vert-1);
+}
+.vert1-m-lr{
+	@include section-spacing-override(left,margin,1,$vert-1);
+	@include section-spacing-override(right,margin,1,$vert-1);
+}
+.vert1-m-t{
+	@include section-spacing-override(top,margin,1,$vert-1);
+}
+.vert1-m-b{
+	@include section-spacing-override(bottom,margin,1,$vert-1);
+}
+.vert1-m-l{
+	@include section-spacing-override(left,margin,1,$vert-1);
+}
+.vert1-m-r{
+	@include section-spacing-override(right,margin,1,$vert-1);
+}
+
+// VERT 2 spacing classes
+.vert2-p-tb{
+	@include section-padding-topbottom(1, $vert-2);
+}
+.vert2-p-t{
+	@include section-spacing-override(top,padding,1,$vert-2);
+}
+.vert2-p-b{
+	@include section-spacing-override(bottom,padding,1,$vert-2);
+}
+.vert2-p-lr{
+	@include section-padding-leftright(1, $vert-2);
+}
+.vert2-p-l{
+	@include section-spacing-override(left,padding,1,$vert-2);
+}
+.vert2-p-r{
+	@include section-spacing-override(right,padding,1,$vert-2);
+}
+.vert2-m-t{
+	@include section-spacing-override(top,margin,1,$vert-2);
+}
+.vert2-m-b{
+	@include section-spacing-override(bottom,margin,1,$vert-2);
+}
+.vert2-m-lr{
+	@include section-spacing-override(left,margin,1,$vert-2);
+	@include section-spacing-override(right,margin,1,$vert-2);
+}
+.vert2-m-l{
+	@include section-spacing-override(left,margin,1,$vert-2);
+}
+.vert2-m-r{
+	@include section-spacing-override(right,margin,1,$vert-2);
+}
+
+// VERT 3 spacing classes
+.vert3-p-tb{
+	@include section-padding-topbottom(1, $vert-3);
+}
+.vert3-p-t{
+	@include section-spacing-override(top,padding,1,$vert-3);
+}
+.vert3-p-b{
+	@include section-spacing-override(bottom,padding,1,$vert-3);
+}
+.vert3-p-lr{
+	@include section-padding-leftright(1, $vert-3);
+}
+.vert3-p-l{
+	@include section-spacing-override(left,padding,1,$vert-3);
+}
+.vert3-p-r{
+	@include section-spacing-override(right,padding,1,$vert-3);
+}
+.vert3-m-t{
+	@include section-spacing-override(top,margin,1,$vert-3);
+}
+.vert3-m-b{
+	@include section-spacing-override(bottom,margin,1,$vert-3);
+}
+.vert3-m-lr{
+	@include section-spacing-override(left,margin,1,$vert-3);
+	@include section-spacing-override(right,margin,1,$vert-3);
+}
+.vert3-m-l{
+	@include section-spacing-override(left,margin,1,$vert-3);
+}
+.vert3-m-r{
+	@include section-spacing-override(right,margin,1,$vert-3);
+}
+
+.p-t-0 {
+	padding-top: 0 !important;
+}
+.p-r-0 {
+	padding-right: 0 !important;
+}
+.p-b-0 {
+	padding-bottom: 0 !important;
+}
+.p-l-0 {
+	padding-left: 0 !important;
+}

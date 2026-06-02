@@ -1,0 +1,47 @@
+/* Thin */
+@font-face {
+    font-family: 'Helvetica Now Text';
+    src: url('../fonts/helvetica-now-text-thin.eot');
+    src: url('../fonts/helvetica-now-text-thin.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/helvetica-now-text-thin.woff2') format('woff2'),
+         url('../fonts/helvetica-now-text-thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Regular */
+@font-face {
+    font-family: 'Helvetica Now Text';
+    src: url('../fonts/helvetica-now-text-regular.eot');
+    src: url('../fonts/helvetica-now-text-regular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/helvetica-now-text-regular.woff2') format('woff2'),
+         url('../fonts/helvetica-now-text-regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Medium */
+@font-face {
+    font-family: 'Helvetica Now Text';
+    src: url('../fonts/helvetica-now-text-medium.eot');
+    src: url('../fonts/helvetica-now-text-medium.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/helvetica-now-text-medium.woff2') format('woff2'),
+         url('../fonts/helvetica-now-text-medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Bold */
+@font-face {
+    font-family: 'Helvetica Now Text';
+    src: url('../fonts/helvetica-now-text-bold.eot');
+    src: url('../fonts/helvetica-now-text-bold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/helvetica-now-text-bold.woff2') format('woff2'),
+         url('../fonts/helvetica-now-text-bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}

@@ -1,0 +1,59 @@
+/* Pagination Buttons */
+
+[rel="prev"]:before {
+	content: "« ";
+}
+
+[rel="next"]:after {
+	content: " »";
+}
+
+/* Category masonry card */
+
+@media (min-width: 576px) and (max-width: 991px) {
+	.card-columns {
+		-webkit-column-count: 2;
+		-moz-column-count: 2;
+		column-count: 2;
+	}
+}
+
+/* Horizontal Card */
+
+@media (max-width: 767px) {
+	.card-img-left img {
+		border-top-left-radius: calc(.25rem - 1px);
+		border-top-right-radius: calc(.25rem - 1px);
+		width: 100%;
+		height: auto;
+	}
+}
+
+@media (min-width: 768px) {
+	.card-img-left img {
+		border-top-left-radius: calc(.25rem - 1px);
+		border-bottom-left-radius: calc(.25rem - 1px);
+		object-fit: cover;
+		height: 100%;
+		width: 100%;
+	}
+}
+
+@media (max-width: 991px) {
+	.card-img-left-md img {
+		border-top-left-radius: calc(.25rem - 1px);
+		border-top-right-radius: calc(.25rem - 1px);
+		width: 100%;
+		height: auto;
+	}
+}
+
+@media (min-width: 992px) {
+	.card-img-left-md img {
+		border-top-left-radius: calc(.25rem - 1px);
+		border-bottom-left-radius: calc(.25rem - 1px);
+		object-fit: cover;
+		height: 100%;
+		width: 100%;
+	}
+}
