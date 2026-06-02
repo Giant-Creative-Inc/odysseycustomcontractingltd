@@ -8,6 +8,15 @@ if ( ! defined( 'LEGACY_THEME_URI' ) ) {
 	define( 'LEGACY_THEME_URI', get_stylesheet_directory_uri() . '/legacy-theme' );
 }
 
+// Register the nav menu location the legacy header relies on.
+// setup.php is intentionally not loaded (would conflict with Salient), so we
+// register only what the legacy templates actually need here instead.
+add_action( 'after_setup_theme', function () {
+	register_nav_menus( array(
+		'primary' => __( 'Primary Menu', 'understrap' ),
+	) );
+}, 20 );
+
 // Register custom image sizes the legacy templates rely on.
 // These were originally in the legacy setup.php; we register them here
 // so eh-utility-functions.php can look them up in $_wp_additional_image_sizes.
