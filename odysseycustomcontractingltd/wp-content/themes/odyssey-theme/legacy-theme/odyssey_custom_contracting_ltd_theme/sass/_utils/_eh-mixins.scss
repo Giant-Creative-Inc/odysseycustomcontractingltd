@@ -1,0 +1,294 @@
+@function rem-calc($size) {
+	$remSize: $size / 16;
+	@return #{$remSize}rem;
+}
+
+@function spacer($key: "3") {
+	@return map-get($spacers, $key);
+}
+
+@mixin section-padding-leftright($divisor:1,$map: $section-padding-leftright ) {
+	@each $key, $value in $map {
+		@include media-breakpoint-up($key) {
+			padding-left: calc(#{$value} / #{$divisor});
+			padding-right: calc(#{$value} / #{$divisor});
+		}
+	}
+}
+
+@mixin section-padding-topbottom($divisor:1,$map:$section-padding-topbottom) {
+	@each $key, $value in $map {
+		@include media-breakpoint-up($key) {
+			padding-top: calc(#{$value} / #{$divisor});
+			padding-bottom: calc(#{$value} / #{$divisor});
+		}
+	}
+}
+
+@mixin section-spacing-override($side: right, $type: padding, $divisor: 1, $map:$section-padding-leftright) {
+	@each $key, $value in $map {
+		@include media-breakpoint-up($key) {
+			#{$type}-#{$side}: calc(#{$value} / #{$divisor});
+		}
+	}
+}
+
+@mixin extend-past-grid-container-padding($breakpoint:'xs', $side:'both') {
+
+	@if $side =='both' {
+		@if $breakpoint=='all' {
+			/**
+				extend element the distance of the grid-container padding so that
+				it's flush with left/right edges of the screen
+			*/
+			@each $key, $value in $grid-breakpoints {
+				@include media-breakpoint-only(#{$key}) {
+					margin-left: map-get($section-padding-leftright, $key) * -1;
+					margin-right: map-get($section-padding-leftright, $key) * -1;
+
+					// double width to account for extension
+					width: calc(100% + (#{map-get($section-padding-leftright, $key)} * 2));
+				}
+			}
+
+		} @else {
+			/**
+		extend element the distance of the grid-container padding so that
+		it's flush with left/right edges of the screen
+			*/
+			@include media-breakpoint-only(#{$breakpoint}) {
+				margin-left: map-get($section-padding-leftright, $breakpoint) * -1;
+				margin-right: map-get($section-padding-leftright, $breakpoint) * -1;
+
+				// double width to account for extension
+				width: calc(100% + (#{map-get($section-padding-leftright, $breakpoint)} * 2));
+			}
+		}
+	} @else {
+		@if $breakpoint=='all' {
+			/**
+				extend element the distance of the grid-container padding so that
+				it's flush with left/right edges of the screen
+			*/
+
+			@each $key, $value in $grid-breakpoints {
+				@include media-breakpoint-only(#{$key}) {
+					margin-#{$side}: map-get($section-padding-leftright, $key) * -1;
+
+					width: calc(100% + (#{map-get($section-padding-leftright, $key)}));
+				}
+			}
+
+		} @else {
+			/**
+		extend element the distance of the grid-container padding so that
+		it's flush with left/right edges of the screen
+			*/
+			@include media-breakpoint-only(#{$breakpoint}) {
+				margin-#{$side}: map-get($section-padding-leftright, $breakpoint) * -1;
+
+				width: calc(100% + (#{map-get($section-padding-leftright, $breakpoint)}));
+			}
+		}
+	}
+
+}
+
+// ANGLED DIVS
+@mixin angle($pseudo, $flip: false, $angle: 3deg) {
+	// Possible values for $pseudo are: before, after, both
+	@if $pseudo == 'before' or $pseudo == 'after' or $pseudo == 'both' {
+		position: relative;
+		z-index: 1;
+		$selector: if($pseudo == 'both', '&:before,&:after', '&:#{$pseudo}');
+
+		#{$selector} {
+			background: inherit;
+			content: '';
+			display: block;
+			height: 50%;
+			left: 0;
+			position: absolute;
+			right: 0;
+			z-index: -1;
+			-webkit-backface-visibility: hidden; // for Chrome Windows
+		}
+
+		@if $pseudo == 'before' {
+			#{$selector} {
+				top: 0;
+
+				@if $flip {
+					transform: skewY($angle * -1);
+					transform-origin: 0 0;
+				} @else {
+					transform: skewY($angle);
+					transform-origin: 100% 0;
+				}
+			}
+		}
+
+		@if $pseudo == 'after' {
+			#{$selector} {
+				bottom: 0;
+
+				@if $flip {
+					transform: skewY($angle);
+					transform-origin: 0 100%;
+				} @else {
+					transform: skewY($angle * -1);
+					transform-origin: 100%;
+				}
+			}
+		}
+
+		@if $pseudo == 'both' {
+			&:before {
+				top: 0;
+
+				@if $flip {
+					transform: skewY($angle * -1);
+					transform-origin: 0 0;
+				} @else {
+					transform: skewY($angle);
+					transform-origin: 100% 0;
+				}
+			}
+
+			&:after {
+				bottom: 0;
+
+				@if $flip {
+					transform: skewY($angle);
+					transform-origin: 0 0;
+				} @else {
+					transform: skewY($angle * -1);
+					transform-origin: 100%;
+				}
+			}
+		}
+	}
+}
+
+// ADD TRANSPARENT OVERLAY OVER BG IMAGE (yet still below div's content)
+@mixin trnsp-bg($color, $alpha, $z: -1) {
+	&::before {
+		background: rgba($color, $alpha);
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: $z;
+	}
+}
+
+// ease animation for links
+@mixin ease-all() {
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	-o-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+
+// center elements
+@mixin margin-center() {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/// ANIMATIONS
+
+@mixin fadein($t, $color1, $color2, $tran) {
+	animation: fadein $tran $t;
+	-moz-animation: fadein $tran $t; /* Firefox */
+	-webkit-animation: fadein $tran $t; /* Safari and Chrome */
+	-o-animation: fadein $tran $t; /* Opera */
+
+	@keyframes fadein {
+		from {
+			opacity: 0;
+			background: $color1;
+		}
+		to {
+			opacity: 1;
+			background-color: $color2;
+		}
+	}
+	@-moz-keyframes fadein { /* Firefox */
+		from {
+			opacity: 0;
+			background: $color1;
+		}
+		to {
+			opacity: 1;
+			background: $color2;
+		}
+	}
+	@-webkit-keyframes fadein { /* Safari and Chrome */
+		from {
+			opacity: 0;
+			background: $color1;
+		}
+		to {
+			opacity: 1;
+			background: $color2;
+		}
+	}
+	@-o-keyframes fadein { /* Opera */
+		from {
+			opacity: 0;
+			background: $color1;
+		}
+		to {
+			opacity: 1;
+			background: $color2;
+		}
+	}
+}
+
+%clearfix {
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+%bgimg {
+	background: $secondary no-repeat center center;
+	background-size: cover;
+}
+
+@mixin underline-hover-l-r($color, $height:0.75rem) {
+
+	display: inline-block;
+	padding-bottom: 0;
+	&:after {
+		content: '';
+		display: block;
+		height: $height;
+		width: 0;
+		background: transparent;
+		transition: width .5s ease, background-color .5s ease;
+		margin-top: -($height + $height/2);
+	}
+	&:hover, &:focus, &:active {
+		&:after {
+			width: 100%;
+			background: $color;
+		}
+	}
+}
+
+@mixin text-size($type) {
+	font-size: map-get(map-get($font-sizing, "xs"), $type);
+	@include media-breakpoint-up(sm) {
+		font-size: map-get(map-get($font-sizing, "md"), $type);
+	}
+	@include media-breakpoint-up(md) {
+		font-size: map-get(map-get($font-sizing, "lg"), $type);
+	}
+}

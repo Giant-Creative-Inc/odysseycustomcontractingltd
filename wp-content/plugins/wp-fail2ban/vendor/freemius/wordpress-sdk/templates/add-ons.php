@@ -25,9 +25,6 @@
     $is_data_debug_mode = $fs->is_data_debug_mode();
     $is_whitelabeled    = $fs->is_whitelabeled();
 
-    $default_currency = $fs->apply_filters( 'default_currency', 'usd' );
-    $currency_symbol  = FS_Pricing::currency_symbol( $default_currency );
-
 	/**
 	 * @var FS_Plugin[]
 	 */
@@ -152,11 +149,12 @@
 									foreach ( $plan->pricing as $pricing ) {
                                         $pricing = new FS_Pricing( $pricing );
 
-                                        if ( $default_currency !== $pricing->currency ) {
+                                        if ( ! $pricing->is_usd() ) {
                                             /**
-                                             * Skip pricings not in the default currency.
+                                             * Skip non-USD pricing.
                                              *
-                                             * @author @invisnet
+                                             * @author Leo Fajardo (@leorw)
+                                             * @since 2.3.1
                                              */
                                             continue;
                                         }
@@ -247,7 +245,7 @@
 											if ($has_free_plan)
 												$descriptors[] = fs_text_inline( 'Free', 'free', $slug );
 											if ($has_paid_plan && $price > 0)
-												$descriptors[] = $currency_symbol . number_format( $price, 2 );
+												$descriptors[] = '$' . number_format( $price, 2 );
 											if ($has_trial)
 												$descriptors[] = fs_text_x_inline( 'Trial', 'trial period',  'trial', $slug );
 
@@ -493,12 +491,3 @@
 	if ( $has_tabs ) {
 		$fs->_add_tabs_after_content();
 	}
-
-	$params = array(
-		'page'           => 'addons',
-		'module_id'      => $fs->get_id(),
-		'module_type'    => $fs->get_module_type(),
-		'module_slug'    => $slug,
-		'module_version' => $fs->get_plugin_version(),
-	);
-	fs_require_template( 'powered-by.php', $params );

@@ -1,0 +1,323 @@
+// This is an empty scss file for your custom styles - Please add your super duper awesome mega design styles here
+@import "../_utils/eh-mixins";
+@import "container";
+@import "typography";
+@import "footer";
+@import "nav";
+@import "../page-templates/maintenance-pages";
+@import "../page-templates/home";
+@import "../page-templates/theme_archive";
+@import "section-footer-cta";
+@import "../page-templates/community";
+
+// OVERRIDES OR MODIFICATIONS
+// We are modifying or overriding bootstrap4 styling
+.btn {
+    @include media-breakpoint-up(sm) {
+        min-width: rem-calc(200);
+    }
+}
+
+.btn,
+.wpcf7 input[type=submit] {
+    @extend .text-uppercase;
+    letter-spacing: 1px;
+}
+
+*::selection {
+    background: $primary !important;
+    color: $black !important;
+}
+
+a.text-white-50 {
+
+    &:hover,
+    &:focus {
+        color: $white !important;
+        opacity: 1 !important;
+        text-decoration: none;
+    }
+}
+
+.bg-black {
+    background-color: $black;
+}
+
+.border-black {
+    border-color: $black !important;
+}
+
+.mw-10col {
+    max-width: rem-calc(1085);
+}
+
+.mxw-xxl {
+    max-width: rem-calc(1312);
+}
+
+.fit-cover {
+    object-fit: cover;
+}
+
+.fit-contain {
+    object-fit: contain;
+}
+
+.fit-fill {
+    object-fit: fill;
+}
+
+.site-main {
+    overflow-wrap: break-word;
+    hyphens: auto;
+    overflow: hidden;
+}
+
+img,
+picture,
+svg {
+    &.use-as-bg {
+        @extend .fit-cover;
+    }
+}
+
+.single-wrapper,
+.entry-content {
+    a {
+        color: $body-color;
+    }
+}
+
+.use-as-bg {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 0;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+}
+
+.bg-img-cont {
+    min-height: rem-calc(250);
+
+    &>*:not(.use-as-bg) {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+.bg-md-reset {
+    @include media-breakpoint-up(md) {
+        background: none !important;
+    }
+}
+
+.bg-transparent {
+    background-color: transparent !important;
+}
+
+.navbar-toggler {
+    &:focus {
+        outline: none;
+        border-color: $primary;
+    }
+
+    &[aria-expanded=true] {
+        border-color: $primary;
+    }
+}
+
+.navbar-collapse {
+    @extend .py-2;
+    @extend .mt-3;
+
+    @include media-breakpoint-up(md) {
+        // reset styles
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0 !important;
+    }
+}
+
+#general_page_hero {
+    &.has-featured-image {
+        height: 100vh;
+        overflow: hidden;
+
+        .use-as-bg {
+            object-position: top center;
+        }
+
+        &>*:not(.use-as-bg) {
+            position: relative;
+            z-index: 2;
+        }
+
+        @include trnsp-bg($black, 0.3, 1);
+    }
+}
+
+.extend-bg-right {
+    position: relative;
+
+    &:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 50vw;
+        z-index: -1;
+    }
+
+    &.bg-black {
+        &:before {
+            background: $black;
+        }
+    }
+}
+
+#contact_page {
+    @include media-breakpoint-down(sm) {
+        padding-top: 0 !important;
+
+        >.col-12 {
+            margin-top: 0 !important;
+        }
+
+        .use-as-bg {
+            position: relative;
+            height: rem-calc(250px);
+            top: unset;
+            left: unset;
+            bottom: unset;
+            right: unset;
+            width: 100%;
+        }
+    }
+}
+
+#sb_instagram {
+    position: relative;
+    z-index: 0;
+    padding: 0 !important;
+    margin: -16px -16px;
+    width: calc(100% + 32px) !important;
+    height: calc(100% + 16px) !important;
+
+    &.sbi_width_resp {
+        width: calc(100% + 32px) !important;
+    }
+
+    #sbi_images {
+        // padding-bottom: 0 !important;
+        // padding-top: 0 !important;
+    }
+
+    #sbi_load {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        @include media-breakpoint-up(sm) {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            width: auto;
+            z-index: 2;
+        }
+
+        a {
+
+            color: $white;
+            font-size: 1rem;
+            font-family: $headings-font-family;
+            display: flex;
+            padding: 1rem;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 0.5rem;
+            border-radius: var(--padding-title, 16px) 0px 0px 0px;
+            background: $black !important;
+
+            &:hover,
+            &:focus {
+                background: $black !important;
+                box-shadow: none !important;
+                color: $navbar-dark-color;
+            }
+
+            svg.svg-inline--fa {
+                display: flex;
+                height: 1.25rem;
+            }
+        }
+    }
+
+
+}
+
+
+
+.post-card {
+    border-radius: 0;
+
+    .card-img {
+        border-radius: 0;
+
+        .post-thumbnail {
+            overflow: hidden;
+            min-height: rem-calc(200);
+
+            @include media-breakpoint-up(sm) {
+                min-height: rem-calc(300);
+            }
+
+            @include media-breakpoint-up(lg) {
+                min-height: rem-calc(400);
+            }
+        }
+
+        >a {
+            img {
+                transition: transform 0.3s ease;
+                border-radius: 0;
+                height: 100%;
+            }
+
+            &:hover,
+            &:focus {
+                img {
+                    transform: scale(1.2);
+                }
+            }
+        }
+    }
+
+    a {
+        color: $body-color;
+    }
+
+    .blog-post-title {
+        >a {
+
+            //color:$body-color;
+            &:hover,
+            &:focus {
+                //color:$primary;
+                text-decoration: none;
+            }
+        }
+    }
+
+    // hide injected share buttons
+    .sharedaddy {
+        display: none !important;
+    }
+}

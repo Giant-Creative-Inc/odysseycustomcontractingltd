@@ -232,7 +232,7 @@ abstract class Purger {
 				$url = get_sample_permalink( $post_id );
 
 				if ( ! empty( $url[0] ) && ! empty( $url[1] ) ) {
-					$url = str_replace( '%postname%', $url[1], $url[0] );
+					$url = str_replace( array('%postname%', '%pagename%'), $url[1], $url[0] );
 				} else {
 					$url = '';
 				}
@@ -263,7 +263,9 @@ abstract class Purger {
 
 			}
 
-			if ( 'post' === $_post_type ) {
+			$post_types = get_post_types( array( 'public' => true ) );
+
+			if ( in_array( $_post_type, $post_types, true ) ) {
 
 				$this->log( 'Purging date' );
 
@@ -387,7 +389,8 @@ abstract class Purger {
 		}
 
 		// Build a hash of the URL.
-		$hash = md5( $url_data['scheme'] . 'GET' . $url_data['host'] . $url_data['path'] );
+		$url_path = isset( $url_data['path'] ) ? $url_data['path'] : '';
+		$hash = md5( $url_data['scheme'] . 'GET' . $url_data['host'] . $url_path );
 
 		// Ensure trailing slash.
 		$cache_path = RT_WP_NGINX_HELPER_CACHE_PATH;
@@ -400,10 +403,12 @@ abstract class Purger {
 		 * Filters the cached file name.
 		 *
 		 * @since 2.1.0
+		 * @since 2.2.3 Purge URL argument `$url` were added.
 		 *
 		 * @param string $cached_file Cached file name.
+		 * @param string $url         URL to be purged.
 		 */
-		$cached_file = apply_filters( 'rt_nginx_helper_purge_cached_file', $cached_file );
+		$cached_file = apply_filters( 'rt_nginx_helper_purge_cached_file', $cached_file, $url );
 
 		// Verify cached file exists.
 		if ( ! file_exists( $cached_file ) ) {
@@ -524,7 +529,7 @@ abstract class Purger {
 
 		global $nginx_helper_admin;
 
-		if ( ! $nginx_helper_admin->options['enable_log'] ) {
+		if ( ! $nginx_helper_admin->is_nginx_log_enabled() ) {
 			return;
 		}
 
@@ -557,7 +562,7 @@ abstract class Purger {
 
 		global $nginx_helper_admin;
 
-		if ( ! $nginx_helper_admin->options['enable_log'] ) {
+		if ( ! $nginx_helper_admin->is_nginx_log_enabled() ) {
 			return;
 		}
 
@@ -683,12 +688,24 @@ abstract class Purger {
 		if ( function_exists( 'icl_get_home_url' ) ) {
 
 			$homepage_url = trailingslashit( icl_get_home_url() );
-			$this->log( sprintf( __( 'Purging homepage (WPML) ', 'nginx-helper' ) . '%s', $homepage_url ) );
+			$this->log(
+				sprintf(
+					/* translators: %s homepage URL */
+					__( 'Purging homepage (WPML) %s', 'nginx-helper' ),
+					$homepage_url
+				)
+			);
 
 		} else {
 
 			$homepage_url = trailingslashit( home_url() );
-			$this->log( sprintf( __( 'Purging homepage ', 'nginx-helper' ) . '%s', $homepage_url ) );
+			$this->log( 
+				sprintf(
+					/* translators: %s homepage URL */
+					__( 'Purging homepage %s', 'nginx-helper' ),
+					$homepage_url
+				)
+			);
 
 		}
 
@@ -698,29 +715,6 @@ abstract class Purger {
 
 	}
 
-	/**
-	 * Purge personal urls.
-	 *
-	 * @return bool
-	 */
-	private function _purge_personal_urls() {
-
-		global $nginx_helper_admin;
-
-		$this->log( __( 'Purging personal urls', 'nginx-helper' ) );
-
-		if ( isset( $nginx_helper_admin->options['purgeable_url']['urls'] ) ) {
-
-			foreach ( $nginx_helper_admin->options['purgeable_url']['urls'] as $url ) {
-				$this->purge_url( $url, false );
-			}
-		} else {
-			$this->log( '- ' . __( 'No personal urls available', 'nginx-helper' ) );
-		}
-
-		return true;
-
-	}
 
 	/**
 	 * Purge post categories.
@@ -1135,7 +1129,6 @@ abstract class Purger {
 
 		$this->log( __( "Let's purge everything!", 'nginx-helper' ) );
 		$this->_purge_homepage();
-		$this->_purge_personal_urls();
 		$this->_purge_all_posts();
 		$this->_purge_all_taxonomies();
 		$this->_purge_all_date_archives();

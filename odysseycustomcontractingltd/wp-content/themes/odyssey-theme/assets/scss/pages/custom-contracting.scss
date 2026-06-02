@@ -1,0 +1,186 @@
+@import '../variables';
+@import '../mixin';
+.shield-bg {
+  .row-bg {
+    img {
+      object-fit: none !important;
+      object-position: -2% 65%  !important;
+    }
+  }
+}
+.custom-contracting {
+  &__hero { 
+    > .row_col_wrap_12 {
+      display: flex;
+    }
+    p {
+      color: #D8E3D4 !important;
+      font-size: 16px;
+      line-height: 1.5;
+      letter-spacing: -0.96px;
+    }
+    .hero-content {
+      min-height: 400px;
+      height: calc(100svh - 166px);
+      max-height: 874px;
+      max-width: 1890px;
+      margin: 0 auto !important;
+      width: calc(100svw - 24px);
+      .wpb_wrapper>div.inner_row.logo-container {
+        margin-top: auto !important;
+        margin-bottom: auto !important;
+      }
+    }
+  }
+  &__our-services {
+    .nectar-post-grid-wrap[data-style="vertical_list"] .nectar-post-grid[data-grid-spacing="35px"] .nectar-post-grid-item .content {
+      padding: 32px 0;
+      h3 {
+        line-height: 0.91;
+        letter-spacing: -2.4px;
+      }
+    }
+  }
+  &__how-we-work {
+    h3 {
+      margin-bottom: 24px !important;
+    }
+    .vc_col-sm-4:not(:first-child) {
+      border-top: 1px solid #BBCDB3;
+      @include desktop {
+        border-left: 1px solid #BBCDB3;
+        border-top: none;
+      }
+    }
+  }
+  &__our-process {
+    h3 {
+      margin-bottom: 33px !important;
+    }
+    .nectar-hor-list-item {
+      &:last-child {
+        border-bottom: 1px solid #BBCDB3 !important;
+      }
+      padding: 16px 0 !important;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      flex-direction: row;
+      .nectar-list-item {
+        padding: 0 !important;
+        width: auto;
+        line-height: 0.92;
+        letter-spacing: -1.2px;
+      }
+    }
+  }
+  &__faq {
+    .light li {
+      color: var(--nectar-page-light-text-color, var(--nectar-font-light-color, #fff));
+      &:not(:last-child) {
+        margin-bottom: 24px;
+      }
+    }
+    .nectar-inherit-h3 {
+      font-size: 32px !important;
+      font-weight: 400;
+      letter-spacing: -1.6px;
+    }
+  }
+  &__our-work {
+    .vc_col-sm-6 {
+      .wpb_wrapper {
+        > * {
+          margin-bottom: 0 !important;
+        }
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        .nectar-star-rating {
+          padding: 12px 0 !important;
+          height: 44px;
+          .nectar-star-rating__icon:before {
+            line-height: 1 !important;
+            color: #FFC107;
+          }
+        }
+        p {
+          color: #20322D !important;
+          font-weight: 400;
+          line-height: 1.5;
+          letter-spacing: -0.96px;
+          @include desktop {
+            width: 82%;
+          }
+        }
+      }
+    }
+    @include desktop {
+      border-left: 1px solid #EBEDED;
+      border-right: 1px solid #EBEDED;
+      &::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0%;
+        bottom: 0;
+        height: 100%;
+        width: 1px;
+        background-color: #EBEDED;
+      }
+      .row_col_wrap_12 {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto 280px 280px auto auto;
+        column-gap: 64px;
+        align-items: start;
+        flex-wrap: unset !important;
+        padding-left: 46px !important;
+        padding-right: 46px !important;
+        > .vc_col-sm-12 {
+          grid-column: 1 / -1;
+          grid-row: 1 / 2;
+          width: 100% !important;
+        }
+        > .vc_col-sm-6 {
+          width: 100% !important;
+          .wpb_wrapper {
+            > * {
+              margin-bottom: 0 !important;
+            }
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+          }
+        }
+        > .vc_col-sm-6:nth-child(2) {
+          grid-column: 1;
+          grid-row: 2 / 4;
+        }
+        > .vc_col-sm-6:nth-child(3) {
+          grid-column: 2;
+          grid-row: 3 / 6;
+        }
+        > .vc_col-sm-6:nth-child(4) {
+          grid-column: 1;
+          grid-row: 5 / 7;
+        }
+        > .vc_col-sm-6:nth-child(5) {
+          grid-column: 2;
+          grid-row: 6 / 8;
+        }
+      }
+    }
+  }
+}
+[data-color-change-section-bg-color]:not(.container-wrap) .custom-contracting {
+  &__cta {
+    .light p {
+      color: #666 !important;
+    }
+    .column-image-bg-wrap img {
+      object-fit: none !important;
+    }
+  }
+}

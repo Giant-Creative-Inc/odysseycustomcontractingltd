@@ -1,0 +1,116 @@
+.footer-content {
+  img.footer-logo {
+    width: 220px !important;
+  }
+  .wpb_text_column p {
+    color: #D8E3D4 !important;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -0.96px;
+    max-width: 580px;
+  }
+  .wpb_text_column.footer-title {
+    margin-bottom: 6px;
+    p {
+      color: #BBCDB3 !important;
+    }
+  }
+  .nectar-cta:not(:last-child) {
+    margin: 0 0 24px;
+    @include tablet {
+      margin: 0 0 32px;
+    }
+    @include desktop {
+      margin: 0 0 48px;
+    }
+  }
+  .nectar-cta a {
+    font-weight: 400;
+    line-height: 0.91;
+    letter-spacing: -1.92px;
+    gap: 0 0 !important;
+    .arrow-circle-animation-arrow-wrap {
+      background: transparent !important;
+      padding: 0 !important;
+      svg {
+        width: 27px;
+        height: 27px;
+        aspect-ratio: 1/1;
+        path {
+          fill: #fff !important;
+        }
+      }
+    }
+  }
+  .vc_wp_custommenu ul {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    list-style: none;
+    margin: 12px 0 12px;
+    flex-direction: column;
+    text-align: left;
+    align-items: flex-start;
+    @include tablet {
+      margin: 32px 0 0;
+      flex-direction: row;
+      text-align: center;
+    }
+    @include desktop {
+      gap: 32px;
+      flex-direction: row;
+      margin: 48px 0 0;
+      white-space: nowrap;
+    }
+    padding: 0;
+    li {
+      list-style: none  ;
+      a {
+        position: relative;
+        color: #F5F8F4;
+        font-weight: 500;
+        line-height: 0.91;
+        letter-spacing: -0.9px;
+        &:after {
+          content: '';
+          position: absolute;
+          display: block;
+          bottom: -6px;
+          left: 0;
+          width: 100%;
+          -ms-transform: scaleX(0);
+          -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+          border-top: 2px solid #9BC08B;
+          transform-origin: right;
+          transition: transform 0.3s cubic-bezier(0.25, 0, 0.4, 1), border-color 0.35s cubic-bezier(0.52, 0.01, 0.16, 1);
+          bottom: -3px;
+        }
+        &:hover:after {
+          transform: scaleX(1);
+          transform-origin: left;
+        }
+        &:hover {
+          color: #fff !important;
+        }
+      }
+    }
+  }
+  .footer-logo-name {
+    width: 100% !important;
+  }
+}
+.footer {
+  .copyright a {
+    margin-bottom: 5px;
+  }
+  .copyright a,
+  .copyright {
+    color: #666;
+    font-size: 12px !important;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.7 !important;
+    letter-spacing: -0.72px;
+  }
+}

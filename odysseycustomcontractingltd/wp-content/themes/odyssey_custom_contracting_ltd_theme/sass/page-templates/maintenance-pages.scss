@@ -1,0 +1,35 @@
+body.page-template-under-construction {
+	background: #1C1818;
+	color: white;
+	text-align: center;
+	.uc-logo{
+		width:90%;
+		max-width:rem-calc(200);
+		height:auto;
+		display:block;
+		@include margin-center();
+		@include media-breakpoint-up(md){
+			max-width:rem-calc(300);
+		}
+	}
+	h4,h5,p{
+		color:rgba($white, 0.7);
+	}
+	.btn{
+		@extend .text-reset;
+		color:$white;
+		display:block;
+		@include margin-center();
+		max-width:rem-calc(300);
+		@extend .mb-3;
+		@include media-breakpoint-up(md){
+			max-width:rem-calc(330);
+		}
+		&.btn-outline-primary{
+			&:hover, &:focus{
+				color:$black !important;
+			}
+		}
+	}
+
+}

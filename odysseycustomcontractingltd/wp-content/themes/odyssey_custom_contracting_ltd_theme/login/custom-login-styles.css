@@ -1,0 +1,178 @@
+/* Higbee Studio Custom Login */
+/* Creates a branded login page for the client */
+
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:400,600,700&display=swap');
+@font-face {
+    font-family: 'nulshockbold';
+    src: url('../fonts/nulshock_bd-webfont.woff2') format('woff2'),
+        url('../fonts/nulshock_bd-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'sf_new_republicbold_italic';
+    src: url('../fonts/sf_new_republic_bold_italic-webfont.woff2') format('woff2'),
+        url('../fonts/sf_new_republic_bold_italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'sf_new_republicbold';
+    src: url('../fonts/sf_new_republic_bold-webfont.woff2') format('woff2'),
+        url('../fonts/sf_new_republic_bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'sf_new_republicitalic';
+    src: url('../fonts/sf_new_republic_italic-webfont.woff2') format('woff2'),
+        url('../fonts/sf_new_republic_italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'sf_new_republicregular';
+    src: url('../fonts/sf_new_republic-webfont.woff2') format('woff2'),
+        url('../fonts/sf_new_republic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body.login {
+	background: #18181C;
+	font-family: 'sf_new_republicregular', 'Open Sans', Helvetica, Roboto, Arial, sans-serif;
+	color:rgba(255,255,255, 0.7);
+	font-weight:400;
+}
+
+.login h1 a {
+	width: 100%;
+	background-image: url(../img/Logo/full-wordmark.svg);
+	background-size: contain;
+	font-weight:400;
+	min-height:150px;
+}
+
+/*Labels*/
+
+.login label {
+	font-size: 14px;
+	color: rgba(255,255,255, 0.5);
+	font-family: 'nulshockbold', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	text-transform: uppercase;
+	font-weight:400;
+}
+
+/*Inputs*/
+.login form input[type="text"], .login form input[type="password"], .login form input[type=checkbox] {
+	background: #18181C;
+	border-radius: 0;
+	border: transparent 1px solid;
+	color: #fff;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	font-family: 'sf_new_republicregular', 'Open Sans', Helvetica, Roboto, Arial, sans-serif;
+}
+
+.login form input[type="text"], .login form input[type="password"] {
+	text-transform: none;
+	margin-bottom: 25px;
+	height: 47px;
+	line-height: 47px;
+	padding: 0 18px;
+
+}
+.login form input[type="text"]:focus, .login form input[type="password"]:focus, .login form input[type=checkbox]:focus{
+	border-color: #fff;
+}
+.login .button.wp-hide-pw .dashicons{
+	color:#000;
+}
+.login input[type=checkbox]:checked:before{
+	color:#fff;
+}
+
+/*Login Button*/
+
+.login .button-primary {
+	font-weight: 700;
+	text-transform: uppercase;
+	background: #18181C;
+	color: #fff;
+	border-radius: 0;
+	border: none;
+	font-family: 'nulshockbold', 'Open Sans', Helvetica, Roboto, Arial, sans-serif;
+	border-color: none;
+	text-shadow: none;
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	-o-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+	box-shadow: none;
+	line-height: 2rem;
+}
+
+.login .button-primary:hover, .login .button-primary:active, .login .button-primary:focus  {
+	background: #fff;
+	/*    color: #231f20; */
+	color:#000;
+	border-radius: 0;
+	font-family: 'nulshockbold', 'Open Sans', Helvetica, Roboto, Arial, sans-serif;
+	box-shadow: none;
+	font-weight:700;
+}
+
+.login .button-primary:active {
+	background: #fff;
+	color:#000;
+}
+
+.login .button-primary:focus {
+	background: #fff;
+	color:#000;
+}
+
+.login #backtoblog a, .login #nav a {
+	color: rgba(255,255,255, 0.7);
+}
+
+.login #nav a, .login #backtoblog a {
+	color: rgba(255,255,255, 0.7);;
+}
+.login #nav a:hover, .login #backtoblog a:hover {
+	color: #fff;
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	-o-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+.login #login_error, .login .message{
+	background: #020203;
+	color: rgba(255,255,255, 0.7);
+}
+.login .message{
+	border-left: 4px solid #fff;
+}
+.login #login_error{
+	border-left: 4px solid #ec5840;
+}
+.login #login_error strong{
+	color:#ec5840;
+	font-weight:700;
+	font-family: 'sf_new_republicregular', 'Open Sans', Helvetica, Roboto, Arial, sans-serif;
+}
+
+.login form{
+	/*box-shadow:0rem 0rem 2rem gray;*/
+	background-color:#020203;
+	border:none;
+}

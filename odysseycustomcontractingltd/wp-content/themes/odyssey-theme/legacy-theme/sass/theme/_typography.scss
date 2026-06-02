@@ -1,0 +1,74 @@
+body {
+	// word-break: break-spaces;
+	//white-space: break-spaces;
+	word-break: normal;
+	// hyphens: auto;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+	@extend .text-uppercase;
+}
+h1,.h1{
+	@include text-size(h1);
+}
+h2,.h2{
+	@include text-size(h2)
+}
+
+h3, .h3 {
+
+	@include text-size(h3)
+}
+h4,.h4{
+	@include text-size(h4);
+}
+h5,.h5{
+	@include text-size(h5);
+}
+
+.text-size-large{
+	font-size:$font-size-base * 1.125;
+	@include media-breakpoint-up(lg){
+		font-size:$font-size-lg !important;	
+	}
+	
+}
+
+
+.breadcrumb {
+	hyphens: auto;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+}
+.display-2, .display-3{
+	line-height: 0.85;
+}
+.text-overline{
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 100%; /* 14px */
+	letter-spacing: 9.8px;
+	@extend .text-uppercase;
+}
+
+@include media-breakpoint-down(lg){
+	.display-1 {
+		font-size: calc(1.725rem + 5.7vw) !important;
+	}
+
+	.display-2 {
+		font-size: calc(1.675rem + 5.1vw) !important;
+	}
+
+	.display-3 {
+		font-size: calc(1.575rem + 3.9vw) !important;
+	}
+
+	.display-4 {
+		font-size: calc(1.475rem + 2.7vw) !important;
+	}
+
+}
+
