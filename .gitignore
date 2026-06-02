@@ -24,7 +24,17 @@ wp-config.php
 /wp-content/themes/salient/
 
 # Third-party plugins (managed separately, includes premium/licensed plugins)
-/wp-content/plugins/
+/wp-content/plugins/*
+
+# Plugins to track
+!/wp-content/plugins/gridpane-redis-object-cache/
+!/wp-content/plugins/gridpane-redis-object-cache/**
+
+!/wp-content/plugins/nginx-helper/
+!/wp-content/plugins/nginx-helper/**
+
+!/wp-content/plugins/wp-fail2ban/
+!/wp-content/plugins/wp-fail2ban/**
 
 # Theme node_modules (build dependencies - not tracked in git)
 /wp-content/themes/odyssey-theme/node_modules/
