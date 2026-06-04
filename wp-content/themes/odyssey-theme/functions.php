@@ -11,6 +11,10 @@ require_once get_stylesheet_directory() . '/includes/acf-hooks.php';
 require_once get_stylesheet_directory() . '/includes/critical-css.php';
 require_once get_stylesheet_directory() . '/includes/acf-page-schema.php';
 
+add_filter('nectar_logo_url', function() {
+    return home_url('/custom-contracting/');
+});
+
 // Remove WordPress default Site Icon output.
 add_filter('site_icon_meta_tags', '__return_empty_array');
 

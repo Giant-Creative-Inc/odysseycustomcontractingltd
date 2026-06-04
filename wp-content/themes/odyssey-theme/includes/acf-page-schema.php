@@ -3,7 +3,7 @@
  * Output custom ACF JSON-LD schema before page/post content.
  * Hook: Salient Theme — Before Page/Post Content
  */
-add_action('nectar_hook_before_content_global_section', function () {
+add_action('wp_head', function () {
     if (!function_exists('get_field')) {
         return;
     }
