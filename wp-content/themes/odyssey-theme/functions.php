@@ -3,17 +3,13 @@
 // Child theme version — bump this when deploying CSS/JS changes to bust the cache.
 // Kept separate from nectar_get_theme_version() so Salient updates don't
 // invalidate our own cached assets.
-define( 'ODY_VERSION', '1.1.0' );
+define( 'ODY_VERSION', '1.1.2' );
 
 require_once get_stylesheet_directory() . '/includes/legacy-theme.php';
 require_once get_stylesheet_directory() . '/includes/enqueue.php';
 require_once get_stylesheet_directory() . '/includes/acf-hooks.php';
 require_once get_stylesheet_directory() . '/includes/critical-css.php';
 require_once get_stylesheet_directory() . '/includes/acf-page-schema.php';
-
-add_filter('nectar_logo_url', function() {
-    return home_url('/custom-contracting/');
-});
 
 // Remove WordPress default Site Icon output.
 add_filter('site_icon_meta_tags', '__return_empty_array');

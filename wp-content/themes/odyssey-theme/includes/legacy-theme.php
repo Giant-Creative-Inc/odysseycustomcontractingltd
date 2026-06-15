@@ -14,9 +14,6 @@ function ody_legacy_page_slugs() {
 }
 
 function ody_is_legacy_page() {
-	if ( is_front_page() ) {
-		return true;
-	}
 	if ( is_singular( 'page' ) ) {
 		$slug = get_post_field( 'post_name', get_the_ID() );
 		return in_array( $slug, ody_legacy_page_slugs(), true );

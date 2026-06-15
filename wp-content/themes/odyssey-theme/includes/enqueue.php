@@ -16,11 +16,6 @@ function salient_child_enqueue_styles() {
   // Pages that need the forms JS enqueued.
   $form_pages = array( 'contact', 'careers' );
 
-  // Front page gets its own stylesheet (home.min.css).
-  if ( is_front_page() ) {
-    wp_enqueue_style( 'ody-homepage-style', get_stylesheet_directory_uri() . '/assets/css/home.min.css', array(), filemtime( get_stylesheet_directory() . '/assets/css/home.min.css' ) );
-  }
-
   // Auto-load page-specific CSS based on the page slug.
   // Convention: create assets/scss/pages/{slug}.scss and it loads automatically.
   if ( is_singular( 'page' ) ) {
