@@ -147,7 +147,7 @@ function optimizeImages() {
 
 // Run manually after `gulp build`: gulp critical
 // Requires the local dev site to be running at SITE_URL.
-const SITE_URL = "https://odyssey.giantcreative.local/";
+const SITE_URL = "https://staging.odysseycustomcontractingltd.local/";
 
 // All pages to extract critical CSS from.
 // Critical CSS is merged and deduplicated into a single critical.min.css.
