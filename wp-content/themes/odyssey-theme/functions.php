@@ -10,6 +10,7 @@ require_once get_stylesheet_directory() . '/includes/enqueue.php';
 require_once get_stylesheet_directory() . '/includes/acf-hooks.php';
 require_once get_stylesheet_directory() . '/includes/critical-css.php';
 require_once get_stylesheet_directory() . '/includes/acf-page-schema.php';
+require_once get_stylesheet_directory() . '/includes/nectar-callrail-phone-switch.php';
 
 // Remove WordPress default Site Icon output.
 add_filter('site_icon_meta_tags', '__return_empty_array');

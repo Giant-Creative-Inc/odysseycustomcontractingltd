@@ -34,19 +34,22 @@
   }
   &__video-box  {
     @include touch_screen {
-      > .row_col_wrap_12 > .wpb_column:nth-child(4) {
-        order: 1;
+      > .row_col_wrap_12 {
+        padding-top: 12px !important;
+        > .wpb_column:nth-child(4) {
+          order: 1;
+        }
+        > .wpb_column:nth-child(2) {
+          order: 2;
+        }
+        > .wpb_column:nth-child(3) {
+          order: 3;
+        }
+        > .wpb_column:nth-child(1) {
+          order: 4;
+        }
       }
-      > .row_col_wrap_12 > .wpb_column:nth-child(2) {
-        order: 2;
       }
-      > .row_col_wrap_12 > .wpb_column:nth-child(3) {
-        order: 3;
-      }
-      > .row_col_wrap_12 > .wpb_column:nth-child(1) {
-        order: 4;
-      }
-    }
   }
   &__our-services {
     .nectar-post-grid-wrap[data-style="vertical_list"] .nectar-post-grid[data-grid-spacing="35px"] .nectar-post-grid-item .content {
